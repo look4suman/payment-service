@@ -5,7 +5,7 @@ using MyPaymentService.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Azure App Configuration + Key Vault
-if (!builder.Environment.IsDevelopment())
+if (!builder.Environment.IsDevelopment() && !string.IsNullOrEmpty(builder.Configuration["AppConfig:Endpoint"]))
 {
     builder.Configuration.AddAzureAppConfiguration(options =>
     {
